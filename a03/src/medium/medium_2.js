@@ -1,5 +1,5 @@
 import mpg_data from "./data/mpg_data.js";
-import {getStatistics} from "./medium_1.js";
+import {getStatistics, getSum} from "./medium_1.js";
 
 /*
 This section can be done by using the array prototype functions.
@@ -20,10 +20,13 @@ see under the methods section
  * @param {allCarStats.ratioHybrids} ratio of cars that are hybrids
  */
 export const allCarStats = {
-    avgMpg: undefined,
-    allYearStats: undefined,
-    ratioHybrids: undefined,
+    avgMpg: {city: getStatistics(mpg_data.map(object => object.city_mpg)).mean, highway: getStatistics(mpg_data.map(object => object.highway_mpg)).mean},
+    allYearStats: getStatistics(mpg_data.map(object => object.year)),
+    ratioHybrids: (mpg_data.map(object => object.hybrid).filter(object => object == true).length/mpg_data.map(object => object.hybrid).length),
 };
+ 
+console.log(allCarStats);
+
 
 
 /**
@@ -84,6 +87,73 @@ export const allCarStats = {
  * }
  */
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: mhybrids(),
+    avgMpgByYearAndHybrid: avgMpgByYearAndHybrid()
 };
+
+export function mhybrids () {
+    let hy = mpg_data.filter(x => x.hybrid == true);
+    let ids = hy.map(x => x.id);
+    let makes = hy.map(x => x.make);
+    let make = [];
+    let result = [];
+    for(let i = 0; i < makes.length; i++){
+        if(!make.includes(makes[i])){
+            make.push(makes[i]);
+            result.push({make: makes[i], hybrids: []});
+        }
+    }
+
+    for(let x = 0; x < result.length; x++){
+        for(let i = 0; i< ids.length; i++) {
+            if(hy[i].make == result[x].make) {
+                result[x].hybrids.push(hy[i].id); 
+            }
+        }
+    }
+
+    return result;
+}
+
+console.log(moreStats);
+
+export function avgMpgByYearAndHybrid () {
+    let years = mpg_data.map(x => x.year);
+    let result = [];
+    for(let i = 0; i < years.length; i++){
+        if(!result.includes(years[i])){
+            result.push(years[i]);
+        }
+    }
+
+    let final = {};
+
+    for(let i = 0; i < result.length; i++) {
+        final[result[i]] = { hybrid: {
+            city:
+            getStatistics(mpg_data
+                .filter(x => x.year === result[i])
+                .filter(x => x.hybrid == true)
+                .map(x => x.city_mpg)).mean,
+            highway: 
+            getStatistics(mpg_data 
+                .filter(x => x.year === result[i])
+                .filter(x => x.hybrid == true)
+                .map(x => x.highway_mpg)).mean
+        },
+        notHybrid: {
+            city:
+            getStatistics(mpg_data
+                .filter(x => x.year === result[i])
+                .filter(x => x.hybrid == false)
+                .map(x => x.city_mpg)).mean,
+            highway: 
+            getStatistics(mpg_data 
+                .filter(x => x.year === result[i])
+                .filter(x => x.hybrid == false)
+                .map(x => x.highway_mpg)).mean
+        },
+    }};
+    console.log(final);
+    return final;
+}

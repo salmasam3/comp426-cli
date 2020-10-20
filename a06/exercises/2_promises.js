@@ -19,6 +19,15 @@ import { heroData } from "./data";
 export function getHeroByIdPromise(heroData, id) {
   // 1. Return a new Promise object. See the assignment write-up for
   //    instructions of how to use the new Promise() constructor.
+    return new Promise(((resolve,reject) => {
+      setTimeout(() => {
+        if(heroData.find(hero => hero.id === id)!= null) {
+          resolve(heroData.find(hero => hero.id === id))
+        } else {
+          reject(`No hero was found`);
+        }
+      },1500);
+    }));
 
   // 2. Inside the Promise object's function, find the hero with the correct id
   //    in the heroData array.

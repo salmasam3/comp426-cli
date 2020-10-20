@@ -1,0 +1,182 @@
+html,
+body {
+    background-color: #99badd;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 0.25fr 0.125fr 2fr 0.5fr;
+}
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+.above-game {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+.heading:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.title {
+    font-size: 4em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.score-container {
+    position: relative;
+    display: inline-block;
+    background: #13294B;
+    color: #ffffff;
+    padding: 15px 25px;
+    font-size: 25px;
+    line-height: 47px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-top: 8px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.score-container:after {
+    position: absolute;
+    width: 100%;
+    top: 10px;
+    left: 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 13px;
+    text-align: center;
+    color: #ffffff;
+    content: "Score";
+}
+
+strong.important {
+    text-transform: uppercase;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+#grid-container {
+    grid-row: 4/5;
+    grid-column: 2/3;
+    margin: auto;
+    width: 450px;
+    height: 450px;
+}
+
+table {
+    margin: auto;
+    display: table;
+    background-color: #13294B;
+    color: #ffffff;
+}
+
+.spot {
+    display: table-cell;
+    margin: 2px;
+    box-sizing: border-box;
+    box-shadow: inset 0px 0px 0px 10px #99badd;
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+}
+
+#win {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    margin:0;
+}
+#lose {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    margin:0;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.value2 {
+    background-color: #eee4da;
+}
+
+.value4 {
+    background-color: #CBB2FF;
+}
+
+.value8 {
+    background-color: #A38FFF;
+    ;
+}
+
+.value16 {
+    background-color: #7C82FF;
+}
+
+.value32 {
+    background-color: #DF7DFF;
+}
+
+.value64 {
+    background-color: #FF7DFD;
+}
+
+.value128 {
+    background-color: #404CFF;
+}
+
+.value256 {
+    background-color: #4DDFFF;
+}
+
+.value512 {
+    background-color: #4DFFF0;
+}
+
+.value1024 {
+    background-color: #4DE2FF;
+
+}
+
+.value2048 {
+    background-color: #4DCEFF;
+}
+
+
+#restart-button {
+    display: inline-block;
+    background: #13294B;
+    border-radius: 3px;
+    padding: 0 20px;
+    text-decoration: none;
+    color: #ffffff;
+    display: block;
+    text-align: center;
+    
+}
+
+.game-explanation {
+    margin-top: 10px;
+    grid-row: 5/6;
+    grid-column: 2/3;
+}

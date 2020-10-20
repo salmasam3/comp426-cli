@@ -6,8 +6,9 @@
  * returns: { type: 'number', value: 4 }
  */
 export function identifyVariable(variable) {
-
+   return {type: typeof variable, value: variable};
 }
+console.log(identifyVariable(4));
 
 
 /**
@@ -24,8 +25,13 @@ export function identifyVariable(variable) {
 
  */
 export function identifyArray(array) {
-
+   let result =[];
+   for(let i = 0; i < array.length; i++) {
+      result[i]=identifyVariable(array[i])
+   }
+   return result;
 }
+console.log(identifyArray(['some', 3, [3, 4], false]));
 
 /**
  * mutates the object that is passed in.
@@ -44,8 +50,16 @@ export function identifyArray(array) {
  obj now does not contain the `password` field
  */
 export function removeKey(object, key) {
-
+   delete object[key];
 }
+let test = {
+   name: 'Mr. Boss',
+   title: 'boss',
+   age: 33,
+   password: 'pass123'
+}
+console.log(removeKey(test,'password'));
+console.log(test);
 
 /**
  * Does not mutate the object passed in
@@ -64,8 +78,17 @@ export function removeKey(object, key) {
  If only `removeKeyNonDestructive` was called, nothing would have changed.
  */
 export function removeKeyNonDestructive(object, key) {
-
+   let result = {...object};
+   delete result[key];
+   return result;
 }
+let obj = {
+   name: 'Mr. Boss',
+   title: 'boss',
+   age: 33,
+   password: 'pass123'
+}
+console.log(removeKeyNonDestructive(obj,'password'));
 
 /**
  * Remove and return the listed keys. Without mutating the object passed in.
@@ -89,5 +112,10 @@ export function removeKeyNonDestructive(object, key) {
  * @return {*} The object with its keys removed.
  */
 export function removeKeys(object, keyList) {
-
+   let result = {...object};
+   for(let i = 0; i < keyList.length; i++){
+      delete result[keyList[i]]
+   }
+   return result;
 }
+console.log(removeKeys(obj,['password', 'age']));

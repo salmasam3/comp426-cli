@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>2048</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="controller.js" type = "module" charset="utf-8"></script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <div id="header" class = "heading">
+            <h1 class="title">2048</h1>
+            <div class="score-container">0</div>
+            
+        </div>
+
+        <div class="above-game">
+            <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+            <a id="restart-button">New Game</a>
+        </div>
+
+        <h2 id="win" class = "hidden">You Won!</h2>
+        <h2 id="lose" class = "hidden">Game Over</h2>
+              
+
+        <div id="grid-container"></div>
+        <p class="game-explanation">
+            <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
+        </p>
+</div>
+</body>
+
+</html>

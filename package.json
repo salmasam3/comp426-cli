@@ -15,5 +15,14 @@
     "dotenv": "^8.0.0",
     "form-data": "^2.5.0",
     "prompts": "^2.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onsmith/comp426-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onsmith/comp426-cli/issues"
+  },
+  "homepage": "https://github.com/onsmith/comp426-cli#readme"
 }

@@ -8,8 +8,14 @@ import {variance} from "./data/stats_helpers.js";
  * prototype functions. Very useful
  */
 export function getSum(array) {
-
+    let sum = 0;
+    for(let i = 0; i < array.length; i++) {
+        sum += array[i];
+    }
+    return sum;
 }
+
+console.log(getSum([2,3,4]));
 
 
 /**
@@ -22,8 +28,13 @@ export function getSum(array) {
  * console.log(getMedian(array)); // 4.5
  */
 export function getMedian(array) {
-
+    if(array.length%2 == 0) {
+        return (array[array.length/2-1] + array[array.length/2])/2;
+    } else {
+        return array[(array.length/2)-0.5];
+    }
 }
+console.log(getMedian([3,2,5,6,2,7,4,2,7]));
 
 /**
  * Calculates statistics (see below) on an array of numbers.
@@ -44,7 +55,17 @@ export function getMedian(array) {
   standard_deviation: 1.632993161855452
  }
  */
-export function getStatistics(array) {
-
+export function variancee(array, mean) {
+    return array.map(function (sample) {
+        return Math.pow(mean - sample, 2);
+    })
+        .reduce(function sum(m, v) {
+            m += v;
+            return m;
+        }, 0) / array.length;
 }
+export function getStatistics(array) {
+    return {min: Math.min(...array), median: getMedian(array), max: Math.max(...array), variance: variancee(array,(getSum(array)/array.length)), mean: (getSum(array)/array.length), length: array.length, sum: getSum(array), standard_deviation: Math.sqrt(variancee(array,(getSum(array)/array.length)))}
+}
+console.log(getStatistics([3,2,4,5,5,5,2,6,7]));
 
