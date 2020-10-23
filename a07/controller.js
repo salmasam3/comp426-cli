@@ -51,7 +51,7 @@ $(document).ready(() => {
         let spot = game.gameState.board[index];
         let spot_div = $(`<div class='spot value${spot}'></div>`);
         index++;
-        spot_div.append(`<h1>${spot != 0 ? spot : ""} </h1`);
+        spot_div.append(`<h1>${spot != 0 ? spot : ""} </h1>`);
         row.append($("<td></td>").append(spot_div));
       }
       $board_table.append(row);
